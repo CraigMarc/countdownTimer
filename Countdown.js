@@ -147,7 +147,7 @@ const Countdown = (props) => {
 
         }
         if (button == "Reset") {
-            audio.pause()
+            buzzer.stop()
 
         }
 
