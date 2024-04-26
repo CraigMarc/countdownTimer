@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import Sound from 'react-native-sound';
 
 import {
   SafeAreaView,
@@ -11,17 +12,18 @@ import {
   Button,
 } from 'react-native';
 
-/*
-const Countdown = () => {
-  return (
-    <View>
-    <Text> Loading
-    </Text>
-    </View>
 
+var buzzer = new Sound('buzzer.wav', Sound.MAIN_BUNDLE, (error) => {
+  if (error) {
+    console.log('failed to load the sound', error);
+    return;
+  }
+  // when loaded successfully
+  console.log('duration in seconds: ' + buzzer.getDuration() + 'number of channels: ' + buzzer.getNumberOfChannels());
+});
 
-  );
-};*/
+buzzer.setVolume(1);
+
 
 const Countdown = (props) => {
 
@@ -84,8 +86,13 @@ const Countdown = (props) => {
 
         if (total == 0) {
             setButton("Reset")
-            audio.currentTime = 0
-            audio.play();
+            buzzer.play(success => {
+              if (success) {
+                console.log('successfully finished playing');
+              } else {
+                console.log('playback failed due to audio decoding errors');
+              }
+            });
 
         }
     };
