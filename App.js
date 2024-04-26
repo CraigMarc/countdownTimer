@@ -1,7 +1,7 @@
 /**
  * Sample React Native App
  * https://github.com/facebook/react-native
- *dsfdsfdf
+ *dsfds
  * @format
  * @flow strict-local
  */
