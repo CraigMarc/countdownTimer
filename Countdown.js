@@ -10,6 +10,7 @@ import {
   useColorScheme,
   View,
   Button,
+  Pressable,
 } from 'react-native';
 
 
@@ -23,6 +24,36 @@ var buzzer = new Sound('buzzer.wav', Sound.MAIN_BUNDLE, (error) => {
 });
 
 buzzer.setVolume(1);
+
+var styles = StyleSheet.create({
+  title: {
+   fontWeight: 'bold',
+   fontSize: 35,
+   textAlign: 'center',
+   paddingBottom: 20,
+   paddingTop: 10,
+
+  },
+  timer: {
+    fontSize: 70,
+    textAlign: 'center',
+  },
+
+ button: {
+     alignItems: 'center',
+     justifyContent: 'center',
+     paddingVertical: 12,
+     paddingHorizontal: 32,
+     borderRadius: 4,
+     elevation: 3,
+     backgroundColor: '#24A0ed',
+     width: 200,
+   },
+  text: {
+       fontSize: 20,
+       color: 'white',
+     },
+});
 
 
 const Countdown = (props) => {
@@ -186,14 +217,34 @@ if (startTime.current != 60) {
 
 return (
     <View>
-        <Text>
+        <Text
+        style={styles.title}
+        >
             Gym Timer
         </Text>
-        <Text>Countdown Timer Using React JS</Text>
-        <Text>{timer}</Text>
-        <Button title={button} onPress={onClickReset} />
-        <Button title="Increase" onPress={onClickIncrease} />
-        <Button title="Decrease" onPress={onClickDecrease} />
+        <Pressable
+                    onPress={onClickIncrease}
+                    style={styles.button}
+                    >
+                    <Text style={styles.text}>Increase</Text>
+                    </Pressable>
+
+                <Pressable
+                    onPress={onClickDecrease}
+                    style={styles.button}
+                    >
+                    <Text style={styles.text}>Decrease</Text>
+                    </Pressable>
+
+        <Text style={styles.timer}>{timer}</Text>
+
+        <Pressable
+            onPress={onClickReset}
+            style={styles.button}
+            >
+            <Text style={styles.text}>{button}</Text>
+            </Pressable>
+
     </View>
 );
 
