@@ -28,7 +28,7 @@ buzzer.setVolume(1);
 var styles = StyleSheet.create({
   title: {
    fontWeight: 'bold',
-   fontSize: 35,
+   fontSize: 45,
    textAlign: 'center',
    paddingBottom: 20,
    paddingTop: 10,
@@ -46,7 +46,7 @@ var styles = StyleSheet.create({
      justifyContent: 'center',
      paddingVertical: 12,
      paddingHorizontal: 32,
-     borderRadius: 4,
+     borderRadius: 9,
      elevation: 3,
      backgroundColor: '#24A0ed',
      width: 200,
@@ -59,6 +59,10 @@ var styles = StyleSheet.create({
  timeControl: {
  alignItems: 'center',
      },
+ text: {
+        fontSize: 20,
+        color: 'white',
+      },
 
 });
 
@@ -83,7 +87,7 @@ const Countdown = (props) => {
     // with JS setInterval to keep track of it and
     // stop it when needed
     const Ref = useRef(null);
-    const startTime = useRef(60)
+    const startTime = useRef(180)
 
 
     //const getTimeRemaining = (time) => {

@@ -25,7 +25,7 @@ import Countdown from './Countdown.js'
 const App = () => {
 
  //states
-  const [timer, setTimer] = useState("01:00");
+  const [timer, setTimer] = useState("03:00");
     const [running, setRunning] = useState(true)
     const [button, setButton] = useState("Start")
 
