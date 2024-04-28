@@ -20,7 +20,7 @@ var buzzer = new Sound('buzzer.wav', Sound.MAIN_BUNDLE, (error) => {
     return;
   }
   // when loaded successfully
-  console.log('duration in seconds: ' + buzzer.getDuration() + 'number of channels: ' + buzzer.getNumberOfChannels());
+  //console.log('duration in seconds: ' + buzzer.getDuration() + 'number of channels: ' + buzzer.getNumberOfChannels());
 });
 
 buzzer.setVolume(1);
@@ -32,11 +32,13 @@ var styles = StyleSheet.create({
    textAlign: 'center',
    paddingBottom: 20,
    paddingTop: 10,
+   marginBottom: 60,
 
   },
   timer: {
-    fontSize: 70,
+    fontSize: 80,
     textAlign: 'center',
+    marginBottom: 50,
   },
 
  button: {
@@ -48,11 +50,16 @@ var styles = StyleSheet.create({
      elevation: 3,
      backgroundColor: '#24A0ed',
      width: 200,
+     marginBottom: 40,
+
    },
-  text: {
-       fontSize: 20,
-       color: 'white',
+ startContainer: {
+ alignItems: 'center',
+   },
+ timeControl: {
+ alignItems: 'center',
      },
+
 });
 
 
@@ -222,6 +229,7 @@ return (
         >
             Gym Timer
         </Text>
+    <View style={styles.timeControl}>
         <Pressable
                     onPress={onClickIncrease}
                     style={styles.button}
@@ -235,16 +243,16 @@ return (
                     >
                     <Text style={styles.text}>Decrease</Text>
                     </Pressable>
-
+    </View>
         <Text style={styles.timer}>{timer}</Text>
-
+    <View style={styles.startContainer}>
         <Pressable
             onPress={onClickReset}
             style={styles.button}
             >
             <Text style={styles.text}>{button}</Text>
             </Pressable>
-
+    </View>
     </View>
 );
 
