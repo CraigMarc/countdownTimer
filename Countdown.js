@@ -2,67 +2,72 @@ import { useState, useEffect, useRef } from 'react'
 import Sound from 'react-native-sound';
 
 import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-  Button,
-  Pressable,
+    SafeAreaView,
+    ScrollView,
+    StatusBar,
+    StyleSheet,
+    Text,
+    useColorScheme,
+    View,
+    Button,
+    Pressable,
 } from 'react-native';
 
 
 var buzzer = new Sound('buzzer.wav', Sound.MAIN_BUNDLE, (error) => {
-  if (error) {
-    console.log('failed to load the sound', error);
-    return;
-  }
-  // when loaded successfully
-  //console.log('duration in seconds: ' + buzzer.getDuration() + 'number of channels: ' + buzzer.getNumberOfChannels());
+    if (error) {
+        console.log('failed to load the sound', error);
+        return;
+    }
+    // when loaded successfully
+    //console.log('duration in seconds: ' + buzzer.getDuration() + 'number of channels: ' + buzzer.getNumberOfChannels());
 });
 
 buzzer.setVolume(1);
 
 var styles = StyleSheet.create({
-  title: {
-   fontWeight: 'bold',
-   fontSize: 45,
-   textAlign: 'center',
-   paddingBottom: 20,
-   paddingTop: 10,
-   marginBottom: 60,
 
-  },
-  timer: {
-    fontSize: 80,
-    textAlign: 'center',
-    marginBottom: 50,
-  },
+    title: {
+        fontWeight: 'bold',
+        fontSize: 45,
+        textAlign: 'center',
+        paddingBottom: 20,
+        paddingTop: 10,
+        marginBottom: 60,
 
- button: {
-     alignItems: 'center',
-     justifyContent: 'center',
-     paddingVertical: 12,
-     paddingHorizontal: 32,
-     borderRadius: 9,
-     elevation: 3,
-     backgroundColor: '#24A0ed',
-     width: 200,
-     marginBottom: 40,
+    },
 
-   },
- startContainer: {
- alignItems: 'center',
-   },
- timeControl: {
- alignItems: 'center',
-     },
- text: {
+    timer: {
+        fontSize: 80,
+        textAlign: 'center',
+        marginBottom: 50,
+    },
+
+    button: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingVertical: 12,
+        paddingHorizontal: 32,
+        borderRadius: 10,
+        elevation: 3,
+        backgroundColor: '#24A0ed',
+        width: 200,
+        marginBottom: 40,
+
+    },
+
+    startContainer: {
+        alignItems: 'center',
+    },
+
+    timeControl: {
+        alignItems: 'center',
+    },
+
+    text: {
         fontSize: 20,
         color: 'white',
-      },
+    },
 
 });
 
@@ -129,11 +134,11 @@ const Countdown = (props) => {
         if (total == 0) {
             setButton("Reset")
             buzzer.play(success => {
-              if (success) {
-                console.log('successfully finished playing');
-              } else {
-                console.log('playback failed due to audio decoding errors');
-              }
+                if (success) {
+                    console.log('successfully finished playing');
+                } else {
+                    console.log('playback failed due to audio decoding errors');
+                }
             });
 
         }
@@ -210,11 +215,11 @@ const Countdown = (props) => {
     };
 
     const onClickDecrease = () => {
-if (startTime.current != 60) {
-        startTime.current = startTime.current - 60
-}
+        if (startTime.current != 60) {
+            startTime.current = startTime.current - 60
+        }
         let minutes = startTime.current / 60
-        if (startTime.current / 60 > 9 ) {
+        if (startTime.current / 60 > 9) {
             setTimer(minutes + ":00")
         }
         if (startTime.current / 60 <= 9) {
@@ -223,42 +228,42 @@ if (startTime.current != 60) {
 
 
 
-};
+    };
 
 
-return (
-    <View>
-        <Text
-        style={styles.title}
-        >
-            Gym Timer
-        </Text>
-    <View style={styles.timeControl}>
-        <Pressable
+    return (
+        <View>
+            <Text
+                style={styles.title}
+            >
+                Gym Timer
+            </Text>
+            <View style={styles.timeControl}>
+                <Pressable
                     onPress={onClickIncrease}
                     style={styles.button}
-                    >
+                >
                     <Text style={styles.text}>Increase</Text>
-                    </Pressable>
+                </Pressable>
 
                 <Pressable
                     onPress={onClickDecrease}
                     style={styles.button}
-                    >
+                >
                     <Text style={styles.text}>Decrease</Text>
-                    </Pressable>
-    </View>
-        <Text style={styles.timer}>{timer}</Text>
-    <View style={styles.startContainer}>
-        <Pressable
-            onPress={onClickReset}
-            style={styles.button}
-            >
-            <Text style={styles.text}>{button}</Text>
-            </Pressable>
-    </View>
-    </View>
-);
+                </Pressable>
+            </View>
+            <Text style={styles.timer}>{timer}</Text>
+            <View style={styles.startContainer}>
+                <Pressable
+                    onPress={onClickReset}
+                    style={styles.button}
+                >
+                    <Text style={styles.text}>{button}</Text>
+                </Pressable>
+            </View>
+        </View>
+    );
 
 };
 

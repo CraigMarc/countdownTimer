@@ -24,21 +24,21 @@ import Countdown from './Countdown.js'
 
 const App = () => {
 
- //states
+  //states
   const [timer, setTimer] = useState("03:00");
-    const [running, setRunning] = useState(true)
-    const [button, setButton] = useState("Start")
+  const [running, setRunning] = useState(true)
+  const [button, setButton] = useState("Start")
 
 
-return (
+  return (
     <>
       <Countdown
-    timer={timer}
-    setTimer={setTimer}
-    running={running}
-    setRunning={setRunning}
-    button={button}
-    setButton={setButton}
+        timer={timer}
+        setTimer={setTimer}
+        running={running}
+        setRunning={setRunning}
+        button={button}
+        setButton={setButton}
       />
 
     </>
