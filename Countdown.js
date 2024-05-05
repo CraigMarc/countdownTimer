@@ -1,5 +1,8 @@
 import { useState, useEffect, useRef } from 'react'
 import Sound from 'react-native-sound';
+//keeps app awake all the time
+//import { useKeepAwake } from '@sayem314/react-native-keep-awake';
+import { activateKeepAwake, deactivateKeepAwake} from "@sayem314/react-native-keep-awake";
 
 import {
     SafeAreaView,
@@ -13,6 +16,7 @@ import {
     Pressable,
 } from 'react-native';
 
+// sound code
 
 var buzzer = new Sound('buzzer.wav', Sound.MAIN_BUNDLE, (error) => {
     if (error) {
@@ -24,6 +28,10 @@ var buzzer = new Sound('buzzer.wav', Sound.MAIN_BUNDLE, (error) => {
 });
 
 buzzer.setVolume(1);
+
+// keep awake functions
+
+
 
 var styles = StyleSheet.create({
 
@@ -74,6 +82,9 @@ var styles = StyleSheet.create({
 
 const Countdown = (props) => {
 
+//keeps app awake all the time
+//useKeepAwake();
+
     const {
 
         timer,
@@ -85,6 +96,16 @@ const Countdown = (props) => {
 
 
     } = props;
+
+    // keep awake when timer is running
+
+    if (button == "Stop") {
+    activateKeepAwake();
+    }
+
+    if (button == "Start" || button == "Reset") {
+      deactivateKeepAwake();
+    }
 
 
 
