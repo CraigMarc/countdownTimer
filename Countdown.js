@@ -97,15 +97,32 @@ const Countdown = (props) => {
 
     } = props;
 
-    // keep awake when timer is running
+    // var to disable buttons
+    let disable = false
+
+    // keep awake and when timer is running
 
     if (button == "Stop") {
     activateKeepAwake();
+
     }
 
     if (button == "Start" || button == "Reset") {
       deactivateKeepAwake();
+
     }
+
+    // disable buttons when timer is running or done
+
+     if (button == "Stop" || button == "Reset") {
+       disable = true
+
+        }
+
+        if (button == "Start") {
+          disable = false
+        }
+
 
 
 
@@ -263,6 +280,7 @@ const Countdown = (props) => {
                 <Pressable
                     onPress={onClickIncrease}
                     style={styles.button}
+                    disabled={disable}
                 >
                     <Text style={styles.text}>Increase</Text>
                 </Pressable>
@@ -270,6 +288,7 @@ const Countdown = (props) => {
                 <Pressable
                     onPress={onClickDecrease}
                     style={styles.button}
+                    disabled={disable}
                 >
                     <Text style={styles.text}>Decrease</Text>
                 </Pressable>
