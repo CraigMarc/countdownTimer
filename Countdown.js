@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import Sound from 'react-native-sound';
 //keeps app awake all the time
 //import { useKeepAwake } from '@sayem314/react-native-keep-awake';
-import { activateKeepAwake, deactivateKeepAwake} from "@sayem314/react-native-keep-awake";
+import { activateKeepAwake, deactivateKeepAwake } from "@sayem314/react-native-keep-awake";
 
 import {
     SafeAreaView,
@@ -82,8 +82,8 @@ var styles = StyleSheet.create({
 
 const Countdown = (props) => {
 
-//keeps app awake all the time
-//useKeepAwake();
+    //keeps app awake all the time
+    //useKeepAwake();
 
     const {
 
@@ -103,25 +103,25 @@ const Countdown = (props) => {
     // keep awake and when timer is running
 
     if (button == "Stop") {
-    activateKeepAwake();
+        activateKeepAwake();
 
     }
 
     if (button == "Start" || button == "Reset") {
-      deactivateKeepAwake();
+        deactivateKeepAwake();
 
     }
 
     // disable buttons when timer is running or done
 
-     if (button == "Stop" || button == "Reset") {
-       disable = true
+    if (button == "Stop" || button == "Reset") {
+        disable = true
 
-        }
+    }
 
-        if (button == "Start") {
-          disable = false
-        }
+    if (button == "Start") {
+        disable = false
+    }
 
 
 
